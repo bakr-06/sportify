@@ -13,7 +13,8 @@ import com.example.sportify.match_list_screen.presentation.CompetitionUi
 fun CompetitionRow(
     competitionUiItems: List<CompetitionUi>,
     modifier: Modifier = Modifier,
-    onItemClick: (Int) -> Unit
+    onItemClick: (Int) -> Unit,
+    selectedItemId: Int,
 ) {
     LazyRow(
         modifier = modifier,
@@ -21,7 +22,11 @@ fun CompetitionRow(
         horizontalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         items(items = competitionUiItems) { item ->
-            CompetitionListItem(competitionUi = item, onItemClick = { onItemClick(item.id) })
+            if (selectedItemId == item.id) {
+                SelectedCompetitionListItem(competitionUi = item, onItemClick = { onItemClick(item.id) })
+            } else {
+                CompetitionListItem(competitionUi = item, onItemClick = { onItemClick(item.id) })
+            }
         }
     }
 }
