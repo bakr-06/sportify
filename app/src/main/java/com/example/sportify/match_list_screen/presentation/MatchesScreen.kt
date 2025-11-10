@@ -46,7 +46,7 @@ fun MatchesScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize(),
-                contentAlignment = Alignment.Companion.Center
+                contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator(color = GayRed)
             }
