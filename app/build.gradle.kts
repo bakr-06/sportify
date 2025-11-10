@@ -34,10 +34,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "BASE_URL", "\"http://api.football-data.org/v4/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.football-data.org/v4/\"")
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"http://api.football-data.org/v4/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.football-data.org/v4/\"")
         }
     }
     compileOptions {
