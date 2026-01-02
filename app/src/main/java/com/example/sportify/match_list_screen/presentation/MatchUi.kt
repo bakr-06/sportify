@@ -3,7 +3,7 @@ package com.example.sportify.match_list_screen.presentation
 import com.example.sportify.match_list_screen.domain.entities.Referee
 import com.example.sportify.match_list_screen.domain.entities.Score
 import com.example.sportify.match_list_screen.domain.entities.Season
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
 
 
 data class MatchUi(

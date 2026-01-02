@@ -2,21 +2,35 @@ package com.example.sportify.match_list_screen.domain.mappers
 
 import com.example.sportify.match_list_screen.domain.entities.Competition
 import com.example.sportify.match_list_screen.domain.entities.Competition1
-import com.example.sportify.match_list_screen.domain.entities.Team
 import com.example.sportify.match_list_screen.domain.entities.Match
+import com.example.sportify.match_list_screen.domain.entities.Team
 import com.example.sportify.match_list_screen.presentation.CompetitionUi
-import com.example.sportify.match_list_screen.presentation.TeamUi
 import com.example.sportify.match_list_screen.presentation.MatchUi
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import com.example.sportify.match_list_screen.presentation.TeamUi
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.format.char
 
 fun Match.toUpcomingMatchUi(): MatchUi {
+    val format = LocalDateTime.Format {
+        year()
+        char('-')
+        monthNumber()
+        char('-')
+        day()
+        char('T')
+        hour()
+        char(':')
+        minute()
+        char(':')
+        second()
+        char('Z')
+    }
     return MatchUi(
         competitionUi = this.competition.toCompetitionUi(),
         homeTeam = this.homeTeam.toTeamUi(),
         awayTeam = this.awayTeam.toTeamUi(),
         stage = this.stage ?: "no stage",
-        dateTime = this.utcDate.formatAsDate(),
+        dateTime = LocalDateTime.parse(this.utcDate, format),
         referees = this.referees,
         id = this.id,
         group = this.group ?: "no group",
@@ -51,11 +65,6 @@ private fun Team.toTeamUi(): TeamUi {
         tla = this.tla ?: "UNK",
         crest = this.crest ?: ""
     )
-}
-
-private fun String.formatAsDate(): LocalDateTime {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-    return LocalDateTime.parse(this, formatter)
 }
 
 fun Int.to12(): String {

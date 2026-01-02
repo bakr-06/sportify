@@ -14,12 +14,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sportify.match_list_screen.presentation.MatchUi
-import java.time.LocalDate
+import kotlinx.datetime.LocalDateTime
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun UpcomingMatchesList(
-    matches: Map<LocalDate, List<MatchUi>>,
+    matches: Map<LocalDateTime, List<MatchUi>>,
     isRefreshing: Boolean,
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
@@ -33,7 +33,7 @@ fun UpcomingMatchesList(
         matches.forEach { (date, matches) ->
             stickyHeader {
                 Text(
-                    text = "${date.dayOfMonth} ${date.month.name.lowercase()}, ${date.dayOfWeek.name.lowercase()}",
+                    text = "${date.day} ${date.month.name.lowercase()}, ${date.dayOfWeek.name.lowercase()}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color.White,

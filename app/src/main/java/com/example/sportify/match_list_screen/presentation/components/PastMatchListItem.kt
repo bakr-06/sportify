@@ -1,21 +1,13 @@
 package com.example.sportify.match_list_screen.presentation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -32,7 +24,7 @@ import com.example.sportify.match_list_screen.domain.entities.Season
 import com.example.sportify.match_list_screen.presentation.CompetitionUi
 import com.example.sportify.match_list_screen.presentation.MatchUi
 import com.example.sportify.match_list_screen.presentation.TeamUi
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
 
 @Composable
 fun PastMatchListItem(
@@ -157,7 +149,7 @@ private fun PastMatchListItemPreview() {
                     tla = "MUN",
                     crest = "https://crests.football-data.org/66.png"
                 ),
-                dateTime = LocalDateTime.now(),
+                dateTime = LocalDateTime.parse("2021-07-31T11:15:30"),
                 stage = "league Match",
                 group = "",
                 lastUpdated = "",

@@ -1,4 +1,4 @@
-//package com.example.sportify.match_list_screen.presentation.components
+package com.example.sportify.match_list_screen.presentation.components
 //
 //import androidx.compose.foundation.background
 //import androidx.compose.foundation.layout.Arrangement

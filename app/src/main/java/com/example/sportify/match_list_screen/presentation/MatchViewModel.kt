@@ -9,12 +9,7 @@ import com.example.sportify.match_list_screen.domain.entities.Match
 import com.example.sportify.match_list_screen.domain.mappers.toCompetitionUi
 import com.example.sportify.match_list_screen.domain.mappers.toUpcomingMatchUi
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MatchViewModel(
@@ -72,7 +67,7 @@ class MatchViewModel(
                             matches = matches.map { match: Match ->
                                 match.toUpcomingMatchUi()
                             }.groupBy {
-                                it.dateTime.toLocalDate()
+                                it.dateTime
                             }
                         )
                     }

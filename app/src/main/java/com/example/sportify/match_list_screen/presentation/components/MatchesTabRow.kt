@@ -1,5 +1,6 @@
 package com.example.sportify.match_list_screen.presentation.components
 
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
@@ -20,16 +21,16 @@ fun MatchesTabRow(
     tabs: List<MatchTab> = MatchTab.entries,
     onTabClick: (MatchTab) -> Unit = { }
 ) {
-    TabRow(
+    PrimaryTabRow(
         selectedTabIndex = selectedTab.ordinal,
         modifier = modifier,
-        indicator = { tabPositions ->
-        if (selectedTab.ordinal < tabPositions.size) {
-            TabRowDefaults.SecondaryIndicator(
-                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
-                color = GayRed
-            )
-        }
+        indicator = {
+//        if (selectedTab.ordinal < tabPositions.size) {
+//            TabRowDefaults.SecondaryIndicator(
+//                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab.ordinal]),
+//                color = GayRed
+//            )
+//        }
     },
     ) {
         tabs.forEach { tab ->

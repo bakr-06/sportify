@@ -1,10 +1,10 @@
 package com.example.sportify.match_list_screen.presentation
 
-import java.time.LocalDate
+import kotlinx.datetime.LocalDateTime
 
 data class MatchesListState(
     val competitions: List<CompetitionUi> = dummyCompetitions,
-    val matches: Map<LocalDate, List<MatchUi>> = emptyMap(),
+    val matches: Map<LocalDateTime, List<MatchUi>> = emptyMap(),
     val isLoadingMatches: Boolean = false,
     val isLoadingCompetitions: Boolean = false,
     val selectedCompetitionId: Int = 2021,

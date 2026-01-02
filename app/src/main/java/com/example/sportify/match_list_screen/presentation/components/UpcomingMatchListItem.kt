@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.sportify.core.presentation.theme.ui.manropeFontFamily
-import com.example.sportify.match_list_screen.domain.mappers.to12
 import com.example.sportify.match_list_screen.presentation.MatchUi
 
 @Composable
@@ -57,7 +56,7 @@ fun UpcomingMatchListItem(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = matchUi.dateTime.hour.to12() ,
+                            text = matchUi.dateTime.hour.toString(),
                             fontFamily = manropeFontFamily,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 12.sp,

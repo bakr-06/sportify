@@ -50,7 +50,7 @@ fun TopBar() {
                 color = Color(0xFFFAFAFA)
             )
             Icon(
-                imageVector = Icons.Outlined.KeyboardArrowDown,
+                imageVector =  Icons.Outlined.KeyboardArrowDown,
                 contentDescription = null,
                 tint = Color(0xFFFAFAFA)
             )
