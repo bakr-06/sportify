@@ -12,6 +12,8 @@ data class MatchUi(
     val homeTeam: TeamUi,
     val awayTeam: TeamUi,
     val dateTime: LocalDateTime,
+    val displayTime: String,
+    val relativeTime: String,
     val stage: String,
     val group: String,
     val lastUpdated: String,

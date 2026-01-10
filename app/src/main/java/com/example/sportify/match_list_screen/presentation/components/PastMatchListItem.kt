@@ -157,7 +157,9 @@ private fun PastMatchListItemPreview() {
                 status = "",
                 referees = listOf(),
                 season = Season(1, "", 1, ""),
-                score = Score("", fullTime = FullTime(1, 1))
+                score = Score("", fullTime = FullTime(1, 1)),
+                displayTime = "9:12",
+                relativeTime = "",
             )
         )
     }

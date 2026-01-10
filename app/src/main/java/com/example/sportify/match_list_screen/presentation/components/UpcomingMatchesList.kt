@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sportify.match_list_screen.presentation.MatchUi
@@ -33,7 +35,7 @@ fun UpcomingMatchesList(
         matches.forEach { (date, matches) ->
             stickyHeader {
                 Text(
-                    text = "${date.day} ${date.month.name.lowercase()}, ${date.dayOfWeek.name.lowercase()}",
+                    text = "${date.day} ${date.month.name.lowercase().capitalize(Locale.current)}, ${date.dayOfWeek.name.lowercase().capitalize(Locale.current)}",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color.White,

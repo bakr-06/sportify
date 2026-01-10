@@ -1,9 +1,11 @@
 package com.example.sportify.match_list_screen.domain.entities
 
 import kotlinx.serialization.Serializable
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 @Serializable
-data class Match(
+data class Match @OptIn(ExperimentalTime::class) constructor(
     val id: Int,
     val area: Area,
     val awayTeam: Team,
@@ -16,7 +18,7 @@ data class Match(
     val season: Season,
     val stage: String?,
     val status: String,
-    val utcDate: String,
+    val utcDate: Instant,
     val score: Score?
 )
 
