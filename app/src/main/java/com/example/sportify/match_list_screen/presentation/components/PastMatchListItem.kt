@@ -2,6 +2,7 @@ package com.example.sportify.match_list_screen.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,90 +38,108 @@ fun PastMatchListItem(
         onClick = { },
     ) {
         Column(
-            modifier = Modifier,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(24.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(36.dp)
-                    ) {
-                        Text(
-                            text = matchUi.homeTeam.tla,
-                            fontFamily = manropeFontFamily,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 14.sp
-                        )
-                        AsyncImage(
-                            model = matchUi.homeTeam.crest,
-                            contentDescription = null,
-                            modifier = Modifier.size(48.dp)
-                        )
-                        Text(
-                            text = "${matchUi.score?.fullTime?.home ?: -1}"
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(36.dp)
-                    ) {
-                        Text(
-                            text = "${matchUi.score?.fullTime?.away ?: -1}"
-                        )
-                        AsyncImage(
-                            model = matchUi.awayTeam.crest,
-                            contentDescription = null,
-                            placeholder = painterResource(R.drawable.manchester_united),
-                            modifier = Modifier.size(48.dp)
-                        )
-                        Text(
-                            text = matchUi.awayTeam.tla,
-                            fontFamily = manropeFontFamily,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 14.sp
-                        )
-                    }
-                }
-            }
-            Row(
+            TeamsRow(
+                homeTeamUi = matchUi.homeTeam,
+                awayTeamUi = matchUi.awayTeam,
+                score = matchUi.score ?: Score(null, FullTime(0, 0)),
+                modifier = Modifier.padding(top = 24.dp)
+
+            )
+            LeagueRow(
+                competitionUi = matchUi.competitionUi,
+                stage = matchUi.stage,
+            )
+        }
+
+    }
+}
+
+@Composable
+private fun TeamsRow(homeTeamUi: TeamUi, awayTeamUi: TeamUi, score: Score, modifier: Modifier = Modifier) {
+    Row(
+        modifier = Modifier.fillMaxWidth().then(modifier),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(36.dp)
+        ) {
+            Text(
+                text = homeTeamUi.tla,
+                fontFamily = manropeFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 14.sp
+            )
+            AsyncImage(
+                model = homeTeamUi.crest,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp)
+            )
+            Text(
+                text = "${score.fullTime.home ?: -1}"
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(36.dp)
+        ) {
+            Text(
+                text = "${score.fullTime.away ?: -1}"
+            )
+            AsyncImage(
+                model = awayTeamUi.crest,
+                contentDescription = null,
+                placeholder = painterResource(R.drawable.manchester_united),
+                modifier = Modifier.size(48.dp)
+            )
+            Text(
+                text = awayTeamUi.tla,
+                fontFamily = manropeFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 14.sp
+            )
+        }
+    }
+}
+
+@Composable
+private fun LeagueRow(competitionUi: CompetitionUi, stage: String, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(Color(0xFF1E1E1E))
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Row(
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFF1E1E1E))
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                    .background(Color.White)
+                    .padding(3.dp), contentAlignment = Alignment.Center
             ) {
-                Row(
-                    modifier = Modifier,
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(modifier = Modifier.background(Color.White).padding(3.dp), contentAlignment = Alignment.Center) {
-                        AsyncImage(
-                            model = matchUi.competitionUi.emblem,
-                            placeholder = painterResource(R.drawable.premier_league),
-                            contentDescription = null,
-                            contentScale = ContentScale.FillBounds,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-                    Text(
-                        text = matchUi.stage
-                            .replace(oldValue = "_", newValue = " ")
-                            .lowercase(),
-                        fontFamily = manropeFontFamily,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 14.sp,
-                        color = Color(0xFFFFFFFF)
-                    )
-                }
+                AsyncImage(
+                    model = competitionUi.emblem,
+                    placeholder = painterResource(R.drawable.premier_league),
+                    contentDescription = null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.size(24.dp)
+                )
             }
+            Text(
+                text = stage
+                    .replace(oldValue = "_", newValue = " ")
+                    .lowercase(),
+                fontFamily = manropeFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 14.sp,
+                color = Color(0xFFFFFFFF)
+            )
         }
     }
 }
