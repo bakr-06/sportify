@@ -10,38 +10,13 @@ import com.example.sportify.match_list_screen.presentation.CompetitionUi
 import com.example.sportify.match_list_screen.presentation.MatchUi
 import com.example.sportify.match_list_screen.presentation.TeamUi
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
-import kotlinx.datetime.format.DateTimeFormat
-import kotlinx.datetime.format.Padding
-import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
-import java.time.format.DateTimeFormatter
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 @OptIn(ExperimentalTime::class)
 fun Match.toUpcomingMatchUi(): MatchUi {
-    val format = DateTimeComponents.Format {
-        year()
-        char('-')
-        monthNumber()
-        char('-')
-        day()
-        char('T')
-        hour()
-        char(':')
-        minute()
-        char(':')
-        second()
-        char('Z')
-    }
-    val newFormat = DateTimeComponents.Format {
-        hour()
-        char(':')
-        minute(Padding.ZERO)
-    }
     return MatchUi(
         competitionUi = this.competition.toCompetitionUi(),
         homeTeam = this.homeTeam.toTeamUi(),

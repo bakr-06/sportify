@@ -1,12 +1,6 @@
 package com.example.sportify.match_list_screen.presentation
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,11 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sportify.core.presentation.theme.ui.GayRed
 import com.example.sportify.core.presentation.theme.ui.SportifyTheme
-import com.example.sportify.match_list_screen.presentation.components.CompetitionRow
-import com.example.sportify.match_list_screen.presentation.components.MatchesTabRow
-import com.example.sportify.match_list_screen.presentation.components.PastMatchesList
-import com.example.sportify.match_list_screen.presentation.components.TopBar
-import com.example.sportify.match_list_screen.presentation.components.UpcomingMatchesList
+import com.example.sportify.match_list_screen.presentation.components.*
 
 @Composable
 fun MatchesScreen(

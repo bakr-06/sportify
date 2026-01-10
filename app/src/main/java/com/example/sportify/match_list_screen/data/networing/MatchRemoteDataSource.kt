@@ -11,11 +11,7 @@ import com.example.sportify.match_list_screen.domain.entities.Competition
 import com.example.sportify.match_list_screen.domain.entities.Match
 import io.ktor.client.*
 import io.ktor.client.request.*
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeFormat
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 class MatchRemoteDataSource(private val httpClient: HttpClient) : MatchDataSource {
