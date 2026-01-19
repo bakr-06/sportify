@@ -54,3 +54,11 @@ A minimalist Android app showcasing upcoming football matches using:
 | **Networking**| Ktor Client      |  
 | **DI**       | Koin             |  
 | **Async**    | Coroutines Flow  |  
+---
+## How To Use:
+1. Frist clone the project, 
+2. generate an API key from [football-data.org](https://www.football-data.org/client/register).
+3. paste it in the local.proerties file
+
+
+
